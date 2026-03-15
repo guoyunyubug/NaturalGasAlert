@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>台灣天然氣安全存量倒計時</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+color:white;
+text-align:center;
+
+background-image:url("bg.png");
+background-size:cover;
+background-position:center;
+height:100vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.title{
+font-size:72px;
+font-weight:bold;
+margin-bottom:40px;
+text-shadow:0 0 20px red;
+}
+
+/* 倒计时背景框 */
+
+.timer-box{
+background:rgba(0,0,0,0.65);
+padding:30px 50px;
+border-radius:15px;
+border:2px solid rgba(255,0,0,0.6);
+}
+
+/* 倒计时文字 */
+
+#timer{
+font-size:100px;
+font-weight:bold;
+color:#ff3b3b;
+text-shadow:0 0 25px red;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="title">
+⚠ 台灣天然氣安全存量倒計時
+</div>
+
+<div class="timer-box">
+<div id="timer"></div>
+</div>
+
+<script>
+
+var target = new Date("2026-03-23 00:00:00").getTime();
+
+setInterval(function(){
+
+var now = new Date().getTime();
+var distance = target - now;
+
+var days = Math.floor(distance/(1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("timer").innerHTML =
+days+"天 "+hours+"時 "+minutes+"分 "+seconds+"秒";
+
+},1000);
+
+</script>
+
+</body>
+</html>
